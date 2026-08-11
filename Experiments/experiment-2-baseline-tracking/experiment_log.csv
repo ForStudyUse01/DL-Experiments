@@ -1,0 +1,4 @@
+exp_id,learning_rate,epochs,batch_size,val_accuracy,test_accuracy,training_time_sec
+EXP-01,0.001,10,32,0.9797,0.9779,48.21
+EXP-02,0.01,10,32,0.9657,0.9592,50.27
+EXP-03,0.0001,10,64,0.9708,0.9636,28.62

@@ -1,0 +1,9 @@
+# Only Experiments/experiment-*/ and Experiments/README.md are tracked for this repo.
+kaggle.json
+kaggriculture/
+Experiments/Sample/
+Experiments/.venv/
+Experiments/reports/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
