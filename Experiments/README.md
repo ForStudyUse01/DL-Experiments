@@ -11,6 +11,7 @@ Repository: https://github.com/ForStudyUse01/DL-Experiments
 | 1 | [Data Pipeline & Preprocessing](experiment-1-data-pipeline) | Titanic | [01_titanic_pipeline.ipynb](experiment-1-data-pipeline/notebooks/01_titanic_pipeline.ipynb) | Stratified 70/15/15 split, reusable `ColumnTransformer` pipeline saved with `joblib` |
 | 2 | [Baseline Model + Experiment Tracking](experiment-2-baseline-tracking) | MNIST | [01_baseline_model.ipynb](experiment-2-baseline-tracking/notebooks/01_baseline_model.ipynb) | 97.79% test accuracy (EXP-01, lr=0.001) — see [experiment_log.csv](experiment-2-baseline-tracking/experiment_log.csv) |
 | 3 | [CNN with Real-World Constraints](experiment-3-cnn-cifar10) | CIFAR-10 | [01_cnn_cifar10.ipynb](experiment-3-cnn-cifar10/notebooks/01_cnn_cifar10.ipynb) | Test accuracy 54.68% -> 59.19% and overfitting gap +13.72% -> -11.95% after adding augmentation + class weighting on a simulated imbalanced split — see [results.csv](experiment-3-cnn-cifar10/results.csv) |
+| 4 | [Transfer Learning (Production Use Case)](experiment-4-transfer-learning) | Dogs vs Cats | [01_transfer_learning.ipynb](experiment-4-transfer-learning/notebooks/01_transfer_learning.ipynb) | Pretrained ResNet50: 98.00% test accuracy via feature extraction alone (117.0 s) vs. 97.50% after fine-tuning the top 30 layers (161.1 s) — see [results.csv](experiment-4-transfer-learning/results.csv) |
 
 ## Structure
 
@@ -29,9 +30,13 @@ experiment-N-<name>/
 
 Each notebook is self-contained and fetches its dataset (Titanic CSV, MNIST, CIFAR-10) on first
 run. Requires Python 3.10+ with `pandas`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn`,
-`joblib`, and (for experiments 2-3) `tensorflow`.
+`joblib`, `pillow`, and (for experiments 2-4) `tensorflow`.
+
+Experiment 4 additionally expects the Dogs vs Cats source archive
+(`kagglecatsanddogs_5340.zip`, from Microsoft's public mirror) at `~/dlcache/kagglecatsanddogs.zip`
+— it is curated into a 2,000-image subsample on first run.
 
 ```bash
-pip install pandas numpy scikit-learn matplotlib seaborn joblib tensorflow jupyter
+pip install pandas numpy scikit-learn matplotlib seaborn joblib pillow tensorflow jupyter
 jupyter nbconvert --to notebook --execute --inplace experiment-N-<name>/notebooks/01_*.ipynb
 ```

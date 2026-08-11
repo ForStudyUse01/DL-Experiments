@@ -1,0 +1,3 @@
+approach,test_accuracy,training_time_sec
+Feature Extraction,0.98,117.0
+Fine-Tuning,0.975,161.1
