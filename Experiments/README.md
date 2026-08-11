@@ -10,7 +10,7 @@ Repository: https://github.com/ForStudyUse01/DL-Experiments
 |---|-------|---------|----------|--------------|
 | 1 | [Data Pipeline & Preprocessing](experiment-1-data-pipeline) | Titanic | [01_titanic_pipeline.ipynb](experiment-1-data-pipeline/notebooks/01_titanic_pipeline.ipynb) | Stratified 70/15/15 split, reusable `ColumnTransformer` pipeline saved with `joblib` |
 | 2 | [Baseline Model + Experiment Tracking](experiment-2-baseline-tracking) | MNIST | [01_baseline_model.ipynb](experiment-2-baseline-tracking/notebooks/01_baseline_model.ipynb) | 97.79% test accuracy (EXP-01, lr=0.001) — see [experiment_log.csv](experiment-2-baseline-tracking/experiment_log.csv) |
-| 3 | [CNN with Real-World Constraints](experiment-3-cnn-cifar10) | CIFAR-10 | [01_cnn_cifar10.ipynb](experiment-3-cnn-cifar10/notebooks/01_cnn_cifar10.ipynb) | CNN with Batch Norm + Dropout, trained with data augmentation + class weighting on a simulated imbalanced split — see [results.csv](experiment-3-cnn-cifar10/results.csv) |
+| 3 | [CNN with Real-World Constraints](experiment-3-cnn-cifar10) | CIFAR-10 | [01_cnn_cifar10.ipynb](experiment-3-cnn-cifar10/notebooks/01_cnn_cifar10.ipynb) | Test accuracy 54.68% -> 59.19% and overfitting gap +13.72% -> -11.95% after adding augmentation + class weighting on a simulated imbalanced split — see [results.csv](experiment-3-cnn-cifar10/results.csv) |
 
 ## Structure
 
