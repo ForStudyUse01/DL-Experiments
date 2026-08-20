@@ -12,6 +12,7 @@ Repository: https://github.com/ForStudyUse01/DL-Experiments
 | 2 | [Baseline Model + Experiment Tracking](experiment-2-baseline-tracking) | MNIST | [01_baseline_model.ipynb](experiment-2-baseline-tracking/notebooks/01_baseline_model.ipynb) | 97.79% test accuracy (EXP-01, lr=0.001) — see [experiment_log.csv](experiment-2-baseline-tracking/experiment_log.csv) |
 | 3 | [CNN with Real-World Constraints](experiment-3-cnn-cifar10) | CIFAR-10 | [01_cnn_cifar10.ipynb](experiment-3-cnn-cifar10/notebooks/01_cnn_cifar10.ipynb) | Test accuracy 54.68% -> 59.19% and overfitting gap +13.72% -> -11.95% after adding augmentation + class weighting on a simulated imbalanced split — see [results.csv](experiment-3-cnn-cifar10/results.csv) |
 | 4 | [Transfer Learning (Production Use Case)](experiment-4-transfer-learning) | Dogs vs Cats | [01_transfer_learning.ipynb](experiment-4-transfer-learning/notebooks/01_transfer_learning.ipynb) | Pretrained ResNet50: 98.00% test accuracy via feature extraction alone (117.0 s) vs. 97.50% after fine-tuning the top 30 layers (161.1 s) — see [results.csv](experiment-4-transfer-learning/results.csv). Saved `.h5` model is gitignored (203 MB, over GitHub's 100 MB limit); regenerate it by re-running the notebook. |
+| 5 | [RNN and Sequence Models — NLP Pipeline with RNN/LSTM](experiment-5-nlp-imdb-lstm) | IMDB Reviews | [01_nlp_pipeline.ipynb](experiment-5-nlp-imdb-lstm/notebooks/01_nlp_pipeline.ipynb) | Embedding + LSTM: 83.11% test accuracy; precision/recall/F1 0.849/0.805/0.827 (Negative), 0.815/0.857/0.835 (Positive) — see [results.csv](experiment-5-nlp-imdb-lstm/results.csv). Saved `.h5` model is gitignored; regenerate by re-running the notebook. |
 
 ## Structure
 
@@ -28,9 +29,9 @@ experiment-N-<name>/
 
 ## Running locally
 
-Each notebook is self-contained and fetches its dataset (Titanic CSV, MNIST, CIFAR-10) on first
-run. Requires Python 3.10+ with `pandas`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn`,
-`joblib`, `pillow`, and (for experiments 2-4) `tensorflow`.
+Each notebook is self-contained and fetches its dataset (Titanic CSV, MNIST, CIFAR-10, IMDB) on
+first run. Requires Python 3.10+ with `pandas`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn`,
+`joblib`, `pillow`, and (for experiments 2-5) `tensorflow`.
 
 Experiment 4 additionally expects the Dogs vs Cats source archive
 (`kagglecatsanddogs_5340.zip`, from Microsoft's public mirror) at `~/dlcache/kagglecatsanddogs.zip`
