@@ -4,6 +4,8 @@ Deep Learning Lab (PEIT37P) experiment notebooks — **Yuvraj Gandhi**, Roll No.
 
 Repository: https://github.com/ForStudyUse01/DL-Experiments
 
+[![CI Pipeline](https://github.com/ForStudyUse01/DL-Experiments/actions/workflows/ci.yml/badge.svg)](https://github.com/ForStudyUse01/DL-Experiments/actions/workflows/ci.yml)
+
 ## Experiments
 
 | # | Title | Dataset | Notebook | Best Result |
@@ -14,6 +16,7 @@ Repository: https://github.com/ForStudyUse01/DL-Experiments
 | 4 | [Transfer Learning (Production Use Case)](experiment-4-transfer-learning) | Dogs vs Cats | [01_transfer_learning.ipynb](experiment-4-transfer-learning/notebooks/01_transfer_learning.ipynb) | Pretrained ResNet50: 98.00% test accuracy via feature extraction alone (117.0 s) vs. 97.50% after fine-tuning the top 30 layers (161.1 s) — see [results.csv](experiment-4-transfer-learning/results.csv). Saved `.h5` model is gitignored (203 MB, over GitHub's 100 MB limit); regenerate it by re-running the notebook. |
 | 5 | [RNN and Sequence Models — NLP Pipeline with RNN/LSTM](experiment-5-nlp-imdb-lstm) | IMDB Reviews | [01_nlp_pipeline.ipynb](experiment-5-nlp-imdb-lstm/notebooks/01_nlp_pipeline.ipynb) | Embedding + LSTM: 83.11% test accuracy; precision/recall/F1 0.849/0.805/0.827 (Negative), 0.815/0.857/0.835 (Positive) — see [results.csv](experiment-5-nlp-imdb-lstm/results.csv). Saved `.h5` model is gitignored; regenerate by re-running the notebook. |
 | 6 | [Time Series Forecasting (Business Use Case)](experiment-6-time-series-lstm) | Airline Passengers | [01_time_series_lstm.ipynb](experiment-6-time-series-lstm/notebooks/01_time_series_lstm.ipynb) | 12-month lag window + 2-layer LSTM: train RMSE 16.13, test RMSE 28.40 (thousands of passengers) — see [results.csv](experiment-6-time-series-lstm/results.csv). Saved `.h5` model is gitignored; regenerate by re-running the notebook. |
+| 9 | [Tools and Deployment — MLOps Basics](experiment-9-mlops-basics) | none (deploys the Exp2 model) | [app.py](experiment-9-mlops-basics/app.py) | Flask API (`/health`, `/predict`) wrapping the Exp2 baseline ANN, containerized with Docker, tested + built on every push via [GitHub Actions](https://github.com/ForStudyUse01/DL-Experiments/actions/runs/33592828610) (3/3 pytest passing). Manual smoke test: true label 7 -> predicted 7, confidence 1.0. |
 
 ## Structure
 
