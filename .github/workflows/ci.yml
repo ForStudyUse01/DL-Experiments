@@ -1,0 +1,35 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Experiments/experiment-9-mlops-basics/**'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'Experiments/experiment-9-mlops-basics/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Experiments/experiment-9-mlops-basics
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m pytest tests/ -v
+
+      - name: Build Docker image
+        run: docker build -t dl-lab-app:ci .
