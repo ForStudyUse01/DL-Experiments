@@ -1,0 +1,7 @@
+endpoint,method,case,status_code,response_time_ms,response_body
+/health,GET,health check,200,9.5,"{""status"":""ok""}
+"
+/predict,POST,predict (with file),200,189.8,"{""confidence"":1.0,""predicted_digit"":7}
+"
+/predict,POST,predict (no file),400,5.4,"{""error"":""No file uploaded""}
+"

@@ -16,6 +16,8 @@ Repository: https://github.com/ForStudyUse01/DL-Experiments
 | 4 | [Transfer Learning (Production Use Case)](experiment-4-transfer-learning) | Dogs vs Cats | [01_transfer_learning.ipynb](experiment-4-transfer-learning/notebooks/01_transfer_learning.ipynb) | Pretrained ResNet50: 98.00% test accuracy via feature extraction alone (117.0 s) vs. 97.50% after fine-tuning the top 30 layers (161.1 s) — see [results.csv](experiment-4-transfer-learning/results.csv). Saved `.h5` model is gitignored (203 MB, over GitHub's 100 MB limit); regenerate it by re-running the notebook. |
 | 5 | [RNN and Sequence Models — NLP Pipeline with RNN/LSTM](experiment-5-nlp-imdb-lstm) | IMDB Reviews | [01_nlp_pipeline.ipynb](experiment-5-nlp-imdb-lstm/notebooks/01_nlp_pipeline.ipynb) | Embedding + LSTM: 83.11% test accuracy; precision/recall/F1 0.849/0.805/0.827 (Negative), 0.815/0.857/0.835 (Positive) — see [results.csv](experiment-5-nlp-imdb-lstm/results.csv). Saved `.h5` model is gitignored; regenerate by re-running the notebook. |
 | 6 | [Time Series Forecasting (Business Use Case)](experiment-6-time-series-lstm) | Airline Passengers | [01_time_series_lstm.ipynb](experiment-6-time-series-lstm/notebooks/01_time_series_lstm.ipynb) | 12-month lag window + 2-layer LSTM: train RMSE 16.13, test RMSE 28.40 (thousands of passengers) — see [results.csv](experiment-6-time-series-lstm/results.csv). Saved `.h5` model is gitignored; regenerate by re-running the notebook. |
+| 7 | [Model Optimization](experiment-7-model-optimization) | none (optimizes the Exp2 model) | [01_model_optimization.ipynb](experiment-7-model-optimization/notebooks/01_model_optimization.ipynb) | Quantization (TFLite): 448.1 KB -> 113.8 KB (-74.7%), latency 99.56 ms -> 0.01 ms, accuracy 97.64% -> 97.60%. Pruning (50% sparsity, manual magnitude-masking): accuracy 97.64% -> 98.15%, no `.h5` size change (HDF5 doesn't compress zeros) — see [results.csv](experiment-7-model-optimization/results.csv) |
+| 8 | [Model Deployment (API + UI)](experiment-8-model-deployment-api-ui) | none (deploys the Exp2 model) | [app.py](experiment-8-model-deployment-api-ui/app.py) / [ui.py](experiment-8-model-deployment-api-ui/ui.py) | Flask API + Streamlit UI for the Exp2 digit classifier; real endpoint tests against the live server — `/health` 200 (9.5 ms), `/predict` with a true-label-7 image -> predicted 7 @ confidence 1.0 (189.8 ms), `/predict` with no file -> 400 (5.4 ms) — see [results.csv](experiment-8-model-deployment-api-ui/results.csv) |
 | 9 | [Tools and Deployment — MLOps Basics](experiment-9-mlops-basics) | none (deploys the Exp2 model) | [app.py](experiment-9-mlops-basics/app.py) | Flask API (`/health`, `/predict`) wrapping the Exp2 baseline ANN, containerized with Docker, tested + built on every push via [GitHub Actions](https://github.com/ForStudyUse01/DL-Experiments/actions/runs/33592828610) (3/3 pytest passing). Manual smoke test: true label 7 -> predicted 7, confidence 1.0. |
 
 ## Structure
@@ -34,8 +36,10 @@ experiment-N-<name>/
 ## Running locally
 
 Each notebook is self-contained and fetches its dataset (Titanic CSV, MNIST, CIFAR-10, IMDB,
-Airline Passengers) on first run. Requires Python 3.10+ with `pandas`, `numpy`, `scikit-learn`,
-`matplotlib`, `seaborn`, `joblib`, `pillow`, and (for experiments 2-6) `tensorflow`.
+Airline Passengers) on first run. Requires Python 3.11+ with `pandas`, `numpy`, `scikit-learn`,
+`matplotlib`, `seaborn`, `joblib`, `pillow`, and (for experiments 2-9) `tensorflow==2.21.0` +
+`keras==3.15.1` (both pinned — see Experiment 9's writeup for why). Experiments 8 and 9
+additionally need `flask`, and 8 needs `streamlit` + `requests` for the UI and endpoint tests.
 
 Experiment 4 additionally expects the Dogs vs Cats source archive
 (`kagglecatsanddogs_5340.zip`, from Microsoft's public mirror) at `~/dlcache/kagglecatsanddogs.zip`

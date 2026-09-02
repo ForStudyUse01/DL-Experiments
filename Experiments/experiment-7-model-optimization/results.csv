@@ -1,0 +1,4 @@
+version,size_kb,accuracy,latency_ms
+Original,448.1,0.9764,99.56
+Quantized (TFLite),113.8,0.976,0.01
+Pruned,448.1,0.9815,94.67
